@@ -37,7 +37,7 @@ def start():
 def move():
     data = bottle.request.json
     return {
-        'move': findNextMove(data),
+        'move': findFood(data, None),
         'taunt': taunt()
     }
 
