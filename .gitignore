@@ -2,3 +2,5 @@
 *.pyc
 battlesnake
 .idea
+*.swp
+__pycache__
