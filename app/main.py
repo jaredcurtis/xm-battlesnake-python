@@ -37,14 +37,51 @@ def start():
 def move():
     data = bottle.request.json
     return {
-        'move': findFood(data, None),
+        'move': findNextMove(data),
         'taunt': 'Come get some!'
     }
+
+def findNextMove(data):
+    move = findHead(data)
+    if move is None:
+        return findFood(data, None)
+    else:
+        return move
 
 def getSnake(gameState, id):
    for snake in gameState["snakes"]:
        if snake["id"] == id :
         return snake
+
+def getOtherSnakeHeads(gameState, id):
+   snakeHeads = []
+   for snake in gameState["snakes"]:
+       if snake["id"] != id :
+           snakeHeads.append(snake["coords"][0])
+   return snakeHeads
+
+def findHead(gameState):
+  mySnake = getSnake(gameState, gameState["you"])
+  head = mySnake["coords"][0]
+  snakeHeads = getOtherSnakeHeads(gameState, gameState["you"])
+  if isSnakeHead(gameState, "left", head, snakeHeads):
+    return "left"
+  if isSnakeHead(gameState, "right", head, snakeHeads):
+    return "right"
+  if isSnakeHead(gameState, "up", head, snakeHeads):
+    return "up"
+  if isSnakeHead(gameState, "down", head, snakeHeads):
+    return "down"
+  else:
+    return None
+
+def isSnakeHead(gameState, move, head, snakeHeads):
+  nextCoord = transformMove(move, head)
+  if nextCoord in snakeHeads:
+    return True
+  else:
+    return False
+
 def findFood(gameState, invalidMoves):
   if invalidMoves is None:
         invalidMoves = []
