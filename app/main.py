@@ -26,10 +26,10 @@ def start():
     # TODO: Do things with data
 
     return {
-        'color': '#00FF00',
-        'taunt': 'Get your neck chopped!',
+        'color': '#FF69B4',
+        'taunt': taunt(),
         'head_url': head_url,
-        'name': 'NinjaGaiden Snake'
+        'name': 'A very nice snake',
     }
 
 
@@ -38,8 +38,40 @@ def move():
     data = bottle.request.json
     return {
         'move': findNextMove(data),
-        'taunt': 'Come get some!'
+        'taunt': taunt()
     }
+
+def taunt():
+    taunts = [
+        'Please take a loathsome brute trash and digest it, you moronic criminal. Peace out.',
+        'You just got your head incinerated.',
+        'Words cannot describe how stupid you truly are.',
+        'Did you leave your annihilated mind on the floor?',
+        'Please take a grubby punk rubbish and eat it, you stupid punk. Go away.',
+        'Did I just end your lumpish reproductive organs?',
+        'You just got your genitals broken.',
+        "I'm sorry, you repulsive brute vermin.",
+        'Go masticate a old brute vermin.',
+        'You just got your mind subdued.',
+        'Good day, you husky ruffian vermin.',
+        'It looks like I may have eradicated your genitals.',
+        'Did I just snuff out your husky eyes?',
+        'You got smashed, you loggerheaded ruffian lump!',
+        'Your brain = broken!',
+        'Go digest a lumpish hooligan vermin.',
+        'I regret to inform you your head has been devoured.',
+        'Words cannot describe how shit-for-brained you truly are.',
+        'You got quelled, you daft delinquent rubbish!',
+        'Words cannot describe how deranged you truly are.',
+        'You just got your genitals disintegrated.',
+        'You truly are the most melonheaded punk disease ever.',
+        'Bye Bye, you loggerheaded brute hair.',
+        "Shut up, you demented thug, you just got so shattered, why don't you go masticate a loggerheaded reproductive organs vermin. Bye.",
+        "Why don't you go chew a old delinquent chunk."
+    ]
+
+    return random.choice(taunts)
+
 
 def findNextMove(data):
     move = findHead(data)
