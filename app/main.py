@@ -60,7 +60,6 @@ def taunt():
         'Your brain = broken!',
         'Go digest a lumpish hooligan vermin.',
         'I regret to inform you your head has been devoured.',
-        'Words cannot describe how shit-for-brained you truly are.',
         'You got quelled, you daft delinquent rubbish!',
         'Words cannot describe how deranged you truly are.',
         'You just got your genitals disintegrated.',
